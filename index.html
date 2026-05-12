@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamBel Access | Tienda Premium</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #3b82f6; --text: #f8fafc; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; text-align: center; }
+        header { padding: 25px; background: #1e293b; border-bottom: 3px solid var(--accent); font-size: 24px; font-weight: bold; }
+        header span { color: var(--accent); }
+        .hero { padding: 40px 20px; background: linear-gradient(180deg, #1e293b, #0f172a); }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
+        .card { background: var(--card); border-radius: 15px; padding: 25px; border: 1px solid #334155; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .price { display: block; font-size: 32px; font-weight: bold; color: #60a5fa; margin: 15px 0; }
+        .btn { background: var(--accent); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .btn:hover { background: #2563eb; }
+        footer { padding: 20px; opacity: 0.5; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<header>SamBel <span>Access</span></header>
+
+<section class="hero">
+    <h1>Cuentas Premium & Minecraft</h1>
+    <p>Calidad garantizada. Entrega inmediata por WhatsApp.</p>
+</section>
+
+<div class="container">
+    <div class="card">
+        <h3>Minecraft Premium</h3>
+        <p>Full Access - Acceso Total</p>
+        <span class="price">$15.00</span>
+        <button class="btn" onclick="comprar('Minecraft Premium', '15.00')">COMPRAR AHORA</button>
+    </div>
+    <div class="card">
+        <h3>Netflix Premium</h3>
+        <p>4K Ultra HD - Perfil Privado</p>
+        <span class="price">$4.00</span>
+        <button class="btn" onclick="comprar('Netflix Premium', '4.00')">COMPRAR AHORA</button>
+    </div>
+    <div class="card">
+        <h3>Disney+ Anual</h3>
+        <p>Cuenta Completa</p>
+        <span class="price">$12.00</span>
+        <button class="btn" onclick="comprar('Disney+ Anual', '12.00')">COMPRAR AHORA</button>
+    </div>
+</div>
+
+<footer>&copy; 2026 SamBel Access | La Guaira, Venezuela</footer>
+
+<script>
+    function comprar(item, precio) {
+        // --- CAMBIA EL NÚMERO ABAJO POR EL TUYO ---
+        const miNumero = "584120000000"; 
+        const texto = encodeURIComponent(`Hola SamBel Access! Quisiera comprar ${item} por $${precio}. ¿Cómo puedo pagar?`);
+        window.open(`https://wa.me/${miNumero}?text=${texto}`, '_blank');
+    }
+</script>
+</body>
+</html>
