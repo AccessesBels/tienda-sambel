@@ -3,61 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SamBel Access | Tienda Premium</title>
+    <title>SamBel Access | Catálogo Premium</title>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #3b82f6; --text: #f8fafc; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; text-align: center; }
-        header { padding: 25px; background: #1e293b; border-bottom: 3px solid var(--accent); font-size: 24px; font-weight: bold; }
-        header span { color: var(--accent); }
-        .hero { padding: 40px 20px; background: linear-gradient(180deg, #1e293b, #0f172a); }
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
-        .card { background: var(--card); border-radius: 15px; padding: 25px; border: 1px solid #334155; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .price { display: block; font-size: 32px; font-weight: bold; color: #60a5fa; margin: 15px 0; }
-        .btn { background: var(--accent); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; }
-        .btn:hover { background: #2563eb; }
-        footer { padding: 20px; opacity: 0.5; font-size: 14px; }
+        :root { --bg: #050505; --card: #111111; --accent: #007bff; --text: #ffffff; --green: #25d366; --blue: #0088cc; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        header { padding: 40px 20px; text-align: center; background: #000; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 100; box-shadow: 0 0 20px rgba(0,123,255,0.3); }
+        .logo { font-size: 32px; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+        
+        .category-title { grid-column: 1 / -1; text-align: left; margin: 40px 0 20px; padding-left: 10px; border-left: 4px solid var(--accent); font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1400px; margin: auto; }
+        .card { background: var(--card); border-radius: 15px; padding: 20px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 25px rgba(0,123,255,0.2); }
+        
+        .card h3 { margin: 0 0 10px; font-size: 18px; color: #fff; }
+        .price { font-size: 28px; font-weight: bold; color: var(--accent); margin: 15px 0; }
+        
+        .btn-group { display: flex; gap: 8px; }
+        .btn { flex: 1; padding: 12px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; font-size: 12px; transition: 0.2s; color: white; display: flex; align-items: center; justify-content: center; }
+        .btn-ws { background: var(--green); }
+        .btn-tg { background: var(--blue); }
+        .btn:hover { filter: brightness(1.2); transform: scale(1.02); }
+        
+        footer { padding: 60px; opacity: 0.4; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
 
-<header>SamBel <span>Access</span></header>
+<header><div class="logo">SamBel <span>Access</span></div></header>
 
-<section class="hero">
-    <h1>Cuentas Premium & Minecraft</h1>
-    <p>Calidad garantizada. Entrega inmediata por WhatsApp.</p>
-</section>
+<div class="container" id="catalogo"></div>
 
-<div class="container">
-    <div class="card">
-        <h3>Minecraft Premium</h3>
-        <p>Full Access - Acceso Total</p>
-        <span class="price">$15.00</span>
-        <button class="btn" onclick="comprar('Minecraft Premium', '15.00')">COMPRAR AHORA</button>
-    </div>
-    <div class="card">
-        <h3>Netflix Premium</h3>
-        <p>4K Ultra HD - Perfil Privado</p>
-        <span class="price">$4.00</span>
-        <button class="btn" onclick="comprar('Netflix Premium', '4.00')">COMPRAR AHORA</button>
-    </div>
-    <div class="card">
-        <h3>Disney+ Anual</h3>
-        <p>Cuenta Completa</p>
-        <span class="price">$12.00</span>
-        <button class="btn" onclick="comprar('Disney+ Anual', '12.00')">COMPRAR AHORA</button>
-    </div>
-</div>
-
-<footer>&copy; 2026 SamBel Access | La Guaira, Venezuela</footer>
+<footer>&copy; 2026 SAMBEL ACCESS | LA GUAIRA, VENEZUELA</footer>
 
 <script>
-    function comprar(item, precio) {
-        // --- CAMBIA EL NÚMERO ABAJO POR EL TUYO ---
-        const miNumero = "584120000000"; 
-        const texto = encodeURIComponent(`Hola SamBel Access! Quisiera comprar ${item} por $${precio}. ¿Cómo puedo pagar?`);
-        window.open(`https://wa.me/${miNumero}?text=${texto}`, '_blank');
+const productos = [
+    { cat: "🎬 SERIES Y PELÍCULAS", items: [
+        { n: "Netflix Única", p: "6 USDT" }, { n: "Netflix Premium", p: "4 USDT" },
+        { n: "Disney+ Premium", p: "3.5 USDT" }, { n: "Disney+ Estándar", p: "2 USDT" },
+        { n: "MAX", p: "3 USDT" }, { n: "VIX+", p: "2 USDT" }, { n: "Apple TV", p: "3 USDT" },
+        { n: "Prime Video", p: "3 USDT" }, { n: "Paramount+", p: "3 USDT" },
+        { n: "Universal+", p: "2 USDT" }, { n: "Crunchyroll", p: "2.5 USDT" },
+        { n: "Crunchyroll 12 meses", p: "15 USDT" }, { n: "Viki Rakuten", p: "3 USDT" },
+        { n: "NBA League Pass", p: "5 USDT" }
+    ]},
+    { cat: "📹 TV EN VIVO", items: [
+        { n: "Tele Latino", p: "3 USDT" }, { n: "Flujo TV", p: "3 USDT" }
+    ]},
+    { cat: "🎵 MÚSICA Y VIDEOS", items: [
+        { n: "Spotify", p: "4 USDT" }, { n: "Tidal", p: "2 USDT" },
+        { n: "Deezer", p: "2 USDT" }, { n: "Apple Music", p: "3 USDT" },
+        { n: "YouTube 1 mes", p: "4 USDT" }
+    ]},
+    { cat: "🤖 IA", items: [
+        { n: "ChatGPT Plus", p: "7 USDT" }
+    ]},
+    { cat: "🎨 HERRAMIENTAS", items: [
+        { n: "Canva Pro EDU", p: "2 USDT" }, { n: "Canva Pro EDU 12m", p: "8 USDT" },
+        { n: "Canva Pro Nueva", p: "3.5 USDT" }, { n: "Canva Pro Renovación", p: "5 USDT" },
+        { n: "Adobe Creative Cloud", p: "8 USDT" }, { n: "Cap Cut", p: "5 USDT" },
+        { n: "SurfShark VPN", p: "3 USDT" }, { n: "Express VPN", p: "3 USDT" },
+        { n: "Google Drive 2TB 12m", p: "20 USDT" }
+    ]}
+];
+
+function render() {
+    const cont = document.getElementById('catalogo');
+    productos.forEach(c => {
+        cont.innerHTML += `<div class="category-title">${c.cat}</div>`;
+        c.items.forEach(i => {
+            cont.innerHTML += `
+                <div class="card">
+                    <h3>${i.n}</h3>
+                    <div class="price">${i.p}</div>
+                    <div class="btn-group">
+                        <button class="btn btn-ws" onclick="comprar('ws', '${i.n}', '${i.p}')">WHATSAPP</button>
+                        <button class="btn btn-tg" onclick="comprar('tg', '${i.n}', '${i.p}')">TELEGRAM</button>
+                    </div>
+                </div>`;
+        });
+    });
+}
+
+function comprar(plataforma, prod, precio) {
+    const msg = encodeURIComponent(`Hola SamBel Access! Quisiera comprar: ${prod} (${precio}).`);
+    if (plataforma === 'ws') {
+        window.open(`https://wa.me/584242157241?text=${msg}`, '_blank');
+    } else {
+        window.open(`https://t.me/AccesesBels`, '_blank');
     }
+}
+
+render();
 </script>
 </body>
 </html>
