@@ -4,70 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AccesesBel Sc | Premium Store</title>
-    <!-- Logo en la pestaña del navegador -->
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <style>
-        :root { --main: #00f2ff; --sec: #00ff88; --bg: #050505; --card: #121212; --text: #ffffff; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; overflow-x: hidden; }
-        
-        header { 
-            padding: 50px 20px; 
-            text-align: center; 
-            background: linear-gradient(180deg, #000 0%, var(--bg) 100%);
-            border-bottom: 2px solid var(--main);
-            position: sticky; top: 0; z-index: 1000;
-        }
-
-        .logo-main { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--main); box-shadow: 0 0 25px var(--main); margin-bottom: 15px; object-fit: cover; }
-        .brand { font-size: 34px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
-        .brand span { color: var(--main); text-shadow: 0 0 15px var(--main); }
-
-        .container { max-width: 1400px; margin: auto; padding: 20px; }
-        .category-header { 
-            font-size: 24px; font-weight: 800; margin: 50px 0 25px; padding: 15px 25px;
-            background: linear-gradient(90deg, rgba(0,242,255,0.15), transparent);
-            border-left: 6px solid var(--main); color: var(--main); text-transform: uppercase;
-        }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { 
-            background: var(--card); border-radius: 25px; padding: 35px; border: 1px solid #222; 
-            text-align: center; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .card:hover { transform: translateY(-12px); border-color: var(--main); box-shadow: 0 0 45px rgba(0,242,255,0.2); }
-        
-        .img-box { width: 110px; height: 110px; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; background: #1a1a1a; border-radius: 20px; }
-        .card img { max-width: 80%; max-height: 80%; filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
-        
-        .price { font-size: 38px; font-weight: 900; color: #fff; margin: 20px 0; display: block; }
-        .card h3 { font-size: 20px; margin: 0; height: 40px; display: flex; align-items: center; justify-content: center; }
-        
-        .actions { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
-        .btn { 
-            padding: 16px; border-radius: 12px; border: none; font-weight: 800; 
-            cursor: pointer; text-decoration: none; color: white; font-size: 14px; transition: 0.3s; 
-        }
-        .btn-ws { background: #25d366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-        .btn-tg { background: #0088cc; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
-        .btn:hover { filter: brightness(1.2); transform: scale(1.05); }
-
-        footer { text-align: center; padding: 100px 20px; opacity: 0.5; font-size: 14px; border-top: 1px solid #222; }
+        :root { --main: #00f2ff; --bg: #050505; --card: #121212; --text: #ffffff; --ws: #25d366; --tg: #0088cc; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; text-align: center; }
+        header { padding: 40px 20px; background: #000; border-bottom: 3px solid var(--main); box-shadow: 0 0 20px var(--main); position: sticky; top: 0; z-index: 1000; }
+        .logo-main { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--main); margin-bottom: 15px; object-fit: cover; box-shadow: 0 0 15px var(--main); }
+        .category-title { grid-column: 1 / -1; text-align: left; margin: 40px 0 20px; padding-left: 15px; border-left: 5px solid var(--main); font-size: 22px; text-transform: uppercase; color: var(--main); }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; padding: 20px; max-width: 1400px; margin: auto; }
+        .card { background: var(--card); border-radius: 20px; padding: 25px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .card:hover { transform: translateY(-10px); border-color: var(--main); box-shadow: 0 0 30px rgba(0,242,255,0.2); }
+        .card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 15px; border-radius: 10px; }
+        .price { font-size: 32px; font-weight: bold; color: #fff; margin: 15px 0; }
+        .btn-group { display: flex; gap: 10px; width: 100%; }
+        .btn { flex: 1; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; font-size: 11px; color: white; transition: 0.2s; }
+        .btn-ws { background: var(--ws); } .btn-tg { background: var(--tg); }
+        footer { padding: 60px; opacity: 0.4; font-size: 12px; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
 <header>
-    <!-- Asegúrate de que el archivo del logo se llame logo.jpg en tu repo de GitHub -->
     <img src="logo.jpg" alt="AccesesBel Logo" class="logo-main" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5260/5260498.png'">
-    <h1 class="brand">AccesesBel <span>Sc</span></h1>
+    <h1>AccesesBel <span>Sc</span></h1>
 </header>
 
-<div class="container" id="app"></div>
+<div class="container" id="catalogo"></div>
 
-<footer>&copy; 2026 ACCESESBEL SC | PREMIUM STORE | LA GUAIRA, VENEZUELA</footer>
+<footer>&copy; 2026 ACCESESBEL SC | LA GUAIRA, VENEZUELA</footer>
 
 <script>
-const shop = [
+const productos = [
     { cat: "🎮 GAMING & RECARGAS", items: [
         { n: "Minecraft Premium", p: "15 USD", img: "https://img.icons8.com/color/512/minecraft-main.png" },
         { n: "Free Fire Diamantes", p: "Desde 1 USD", img: "https://img.icons8.com/color/512/free-fire.png" },
@@ -75,47 +42,51 @@ const shop = [
         { n: "Blood Strike", p: "Desde 1 USD", img: "https://img.icons8.com/fluency/512/target.png" }
     ]},
     { cat: "🎬 SERIES Y PELÍCULAS", items: [
+        { n: "Netflix Única", p: "6 USD", img: "https://img.icons8.com/color/512/netflix.png" },
         { n: "Netflix Premium", p: "4 USD", img: "https://img.icons8.com/color/512/netflix.png" },
         { n: "Disney+ Premium", p: "3.5 USD", img: "https://img.icons8.com/color/512/disney-plus.png" },
-        { n: "MAX Premium", p: "3 USD", img: "https://img.icons8.com/color/512/hbo.png" },
-        { n: "Crunchyroll Mega Fan", p: "2.5 USD", img: "https://img.icons8.com/color/512/crunchyroll.png" },
-        { n: "Prime Video", p: "3 USD", img: "https://img.icons8.com/color/512/amazon-prime-video.png" }
+        { n: "MAX", p: "3 USD", img: "https://img.icons8.com/color/512/hbo.png" },
+        { n: "Prime Video", p: "3 USD", img: "https://img.icons8.com/color/512/amazon-prime-video.png" },
+        { n: "Crunchyroll", p: "2.5 USD", img: "https://img.icons8.com/color/512/crunchyroll.png" }
     ]},
     { cat: "🎵 MÚSICA", items: [
-        { n: "Spotify Premium", p: "4 USD", img: "https://img.icons8.com/color/512/spotify.png" },
+        { n: "Spotify", p: "4 USD", img: "https://img.icons8.com/color/512/spotify.png" },
         { n: "YouTube Premium", p: "4 USD", img: "https://img.icons8.com/color/512/youtube-play.png" }
     ]},
-    { cat: "🎨 HERRAMIENTAS & IA", items: [
+    { cat: "🤖 IA & HERRAMIENTAS", items: [
         { n: "ChatGPT Plus", p: "7 USD", img: "https://img.icons8.com/ios-filled/512/chatgpt.png" },
-        { n: "Canva Pro", p: "3.5 USD", img: "https://img.icons8.com/color/512/canva.png" }
+        { n: "Canva Pro", p: "3.5 USD", img: "https://img.icons8.com/color/512/canva.png" },
+        { n: "Adobe Creative Cloud", p: "8 USD", img: "https://img.icons8.com/color/512/adobe-creative-cloud.png" }
     ]}
 ];
 
-const render = () => {
-    const root = document.getElementById('app');
-    shop.forEach(s => {
-        let html = `<div class="category-header">${s.cat}</div><div class="grid">`;
-        s.items.forEach(i => {
-            html += `
+function render() {
+    const cont = document.getElementById('catalogo');
+    productos.forEach(c => {
+        cont.innerHTML += `<div class="category-title">${c.cat}</div>`;
+        c.items.forEach(i => {
+            cont.innerHTML += `
                 <div class="card">
-                    <div class="img-box"><img src="${i.img}" alt="${i.n}"></div>
+                    <img src="${i.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5260/5260498.png'" alt="${i.n}">
                     <h3>${i.n}</h3>
-                    <span class="price">${i.p}</span>
-                    <div class="actions">
-                        <button class="btn btn-ws" onclick="order('ws','${i.n}','${i.p}')">PEDIR POR WHATSAPP</button>
-                        <button class="btn btn-tg" onclick="order('tg','${i.n}','${i.p}')">PEDIR POR TELEGRAM</button>
+                    <div class="price">${i.p}</div>
+                    <div class="btn-group">
+                        <button class="btn btn-ws" onclick="comprar('ws', '${i.n}', '${i.p}')">WhatsApp</button>
+                        <button class="btn btn-tg" onclick="comprar('tg', '${i.n}', '${i.p}')">Telegram</button>
                     </div>
                 </div>`;
         });
-        root.innerHTML += html + `</div>`;
     });
-};
+}
 
-const order = (type, prod, price) => {
-    const text = encodeURIComponent(`¡Hola AccesesBel Sc! Quisiera adquirir: ${prod} por ${price}.`);
-    window.open(type === 'ws' ? `https://wa.me/584242157241?text=${text}` : `https://t.me/AccesesBels`, '_blank');
-};
-
+function comprar(plataforma, prod, precio) {
+    const msg = encodeURIComponent(`Hola AccesesBel Sc! Quiero comprar: ${prod} (${precio}).`);
+    if (plataforma === 'ws') {
+        window.open(`https://wa.me/584242157241?text=${msg}`, '_blank');
+    } else {
+        window.open(`https://t.me/AccesesBels`, '_blank');
+    }
+}
 render();
 </script>
 </body>
