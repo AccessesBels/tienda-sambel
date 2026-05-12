@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SamBel Access | Catálogo Premium</title>
+    <title>SamBel Access | Store Oficial</title>
     <style>
-        :root { --bg: #050505; --card: #111111; --accent: #007bff; --text: #ffffff; --green: #25d366; --blue: #0088cc; }
+        :root { --bg: #050505; --card: #111111; --accent: #3b82f6; --text: #ffffff; --green: #25d366; --blue: #0088cc; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
-        header { padding: 40px 20px; text-align: center; background: #000; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 100; box-shadow: 0 0 20px rgba(0,123,255,0.3); }
+        header { padding: 40px 20px; text-align: center; background: #000; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 32px; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; }
         .logo span { color: var(--accent); }
         
-        .category-title { grid-column: 1 / -1; text-align: left; margin: 40px 0 20px; padding-left: 10px; border-left: 4px solid var(--accent); font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
+        .category-title { grid-column: 1 / -1; text-align: left; margin: 40px 0 20px; padding-left: 15px; border-left: 4px solid var(--accent); font-size: 22px; text-transform: uppercase; }
         
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1400px; margin: auto; }
-        .card { background: var(--card); border-radius: 15px; padding: 20px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 25px rgba(0,123,255,0.2); }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; padding: 20px; max-width: 1400px; margin: auto; }
+        .card { background: var(--card); border-radius: 20px; padding: 25px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 0 30px rgba(59,130,246,0.3); }
         
-        .card h3 { margin: 0 0 10px; font-size: 18px; color: #fff; }
-        .price { font-size: 28px; font-weight: bold; color: var(--accent); margin: 15px 0; }
+        .card img { width: 70px; height: 70px; object-fit: contain; margin-bottom: 15px; border-radius: 12px; }
+        .card h3 { margin: 0; font-size: 18px; text-align: center; }
+        .price { font-size: 30px; font-weight: bold; color: var(--accent); margin: 15px 0; }
         
-        .btn-group { display: flex; gap: 8px; }
-        .btn { flex: 1; padding: 12px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; font-size: 12px; transition: 0.2s; color: white; display: flex; align-items: center; justify-content: center; }
+        .btn-group { display: flex; gap: 10px; width: 100%; }
+        .btn { flex: 1; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; font-size: 11px; color: white; transition: 0.2s; }
         .btn-ws { background: var(--green); }
         .btn-tg { background: var(--blue); }
-        .btn:hover { filter: brightness(1.2); transform: scale(1.02); }
+        .btn:hover { filter: brightness(1.2); }
         
         footer { padding: 60px; opacity: 0.4; text-align: center; font-size: 12px; }
     </style>
@@ -39,32 +40,28 @@
 
 <script>
 const productos = [
+    { cat: "🎮 GAMING & RECARGAS", items: [
+        { n: "Minecraft Premium", p: "15 USD", img: "minecraft" },
+        { n: "Free Fire (Diamantes)", p: "Desde 1 USD", img: "free-fire" },
+        { n: "COD Mobile (CP)", p: "Desde 1 USD", img: "call-of-duty" },
+        { n: "Blood Strike", p: "Desde 1 USD", img: "target" }
+    ]},
     { cat: "🎬 SERIES Y PELÍCULAS", items: [
-        { n: "Netflix Única", p: "6 USDT" }, { n: "Netflix Premium", p: "4 USDT" },
-        { n: "Disney+ Premium", p: "3.5 USDT" }, { n: "Disney+ Estándar", p: "2 USDT" },
-        { n: "MAX", p: "3 USDT" }, { n: "VIX+", p: "2 USDT" }, { n: "Apple TV", p: "3 USDT" },
-        { n: "Prime Video", p: "3 USDT" }, { n: "Paramount+", p: "3 USDT" },
-        { n: "Universal+", p: "2 USDT" }, { n: "Crunchyroll", p: "2.5 USDT" },
-        { n: "Crunchyroll 12 meses", p: "15 USDT" }, { n: "Viki Rakuten", p: "3 USDT" },
-        { n: "NBA League Pass", p: "5 USDT" }
+        { n: "Netflix Única", p: "6 USD", img: "netflix" }, { n: "Netflix Premium", p: "4 USD", img: "netflix" },
+        { n: "Disney+ Premium", p: "3.5 USD", img: "disney" }, { n: "Disney+ Estándar", p: "2 USD", img: "disney" },
+        { n: "MAX", p: "3 USD", img: "hbo" }, { n: "Prime Video", p: "3 USD", img: "amazon" },
+        { n: "Crunchyroll", p: "2.5 USD", img: "crunchyroll" }, { n: "Paramount+", p: "3 USD", img: "paramount" }
     ]},
-    { cat: "📹 TV EN VIVO", items: [
-        { n: "Tele Latino", p: "3 USDT" }, { n: "Flujo TV", p: "3 USDT" }
+    { cat: "🎵 MÚSICA", items: [
+        { n: "Spotify", p: "4 USD", img: "spotify" }, { n: "YouTube Premium", p: "4 USD", img: "youtube" },
+        { n: "Apple Music", p: "3 USD", img: "apple" }
     ]},
-    { cat: "🎵 MÚSICA Y VIDEOS", items: [
-        { n: "Spotify", p: "4 USDT" }, { n: "Tidal", p: "2 USDT" },
-        { n: "Deezer", p: "2 USDT" }, { n: "Apple Music", p: "3 USDT" },
-        { n: "YouTube 1 mes", p: "4 USDT" }
-    ]},
-    { cat: "🤖 IA", items: [
-        { n: "ChatGPT Plus", p: "7 USDT" }
+    { cat: "🤖 INTELIGENCIA ARTIFICIAL", items: [
+        { n: "ChatGPT Plus", p: "7 USD", img: "openai" }
     ]},
     { cat: "🎨 HERRAMIENTAS", items: [
-        { n: "Canva Pro EDU", p: "2 USDT" }, { n: "Canva Pro EDU 12m", p: "8 USDT" },
-        { n: "Canva Pro Nueva", p: "3.5 USDT" }, { n: "Canva Pro Renovación", p: "5 USDT" },
-        { n: "Adobe Creative Cloud", p: "8 USDT" }, { n: "Cap Cut", p: "5 USDT" },
-        { n: "SurfShark VPN", p: "3 USDT" }, { n: "Express VPN", p: "3 USDT" },
-        { n: "Google Drive 2TB 12m", p: "20 USDT" }
+        { n: "Canva Pro", p: "3.5 USD", img: "canva" }, { n: "Adobe Creative Cloud", p: "8 USD", img: "adobe" },
+        { n: "Google Drive 2TB", p: "20 USD", img: "google-drive" }
     ]}
 ];
 
@@ -73,8 +70,10 @@ function render() {
     productos.forEach(c => {
         cont.innerHTML += `<div class="category-title">${c.cat}</div>`;
         c.items.forEach(i => {
+            const logoUrl = `https://logo.clearbit.com/${i.img}.com`;
             cont.innerHTML += `
                 <div class="card">
+                    <img src="${logoUrl}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5260/5260498.png'" alt="${i.n}">
                     <h3>${i.n}</h3>
                     <div class="price">${i.p}</div>
                     <div class="btn-group">
@@ -87,14 +86,13 @@ function render() {
 }
 
 function comprar(plataforma, prod, precio) {
-    const msg = encodeURIComponent(`Hola SamBel Access! Quisiera comprar: ${prod} (${precio}).`);
+    const msg = encodeURIComponent(`Hola SamBel Access! Quiero comprar: ${prod} (${precio}).`);
     if (plataforma === 'ws') {
         window.open(`https://wa.me/584242157241?text=${msg}`, '_blank');
     } else {
         window.open(`https://t.me/AccesesBels`, '_blank');
     }
 }
-
 render();
 </script>
 </body>
