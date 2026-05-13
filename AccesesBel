@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccesesBel Sc | Premium Store</title>
+    <style>
+        :root {
+            --main: #00f2ff;
+            --bg: #050505;
+            --card: #121212;
+            --text: #ffffff;
+            --ws: #25d366;
+            --tg: #0088cc;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.5;
+        }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #000 0%, var(--bg) 100%);
+            border-bottom: 2px solid var(--main);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-main {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--main);
+            box-shadow: 0 0 20px var(--main);
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        .brand {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+        }
+        .brand span { color: var(--main); text-shadow: 0 0 10px var(--main); }
+
+        /* Estilos del Buscador */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        #itemSearch {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #333;
+            background: #1a1a1a;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        #itemSearch:focus {
+            border-color: var(--main);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+
+        .container { max-width: 1400px; margin: auto; padding: 20px; }
+
+        .category-section { margin-bottom: 40px; }
+        .category-header {
+            font-size: 22px;
+            font-weight: 800;
+            margin: 30px 0 20px;
+            padding: 12px 20px;
+            background: linear-gradient(90deg, rgba(0,242,255,0.1), transparent);
+            border-left: 6px solid var(--main);
+            color: var(--main);
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #222;
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--main);
+            box-shadow: 0 0 25px rgba(0,242,255,0.1);
+        }
+
+        /* Contenedor de Imagen de Producto */
+        .product-img-container {
+            height: 80px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img {
+            max-height: 100%;
+            max-width: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+        }
+        .product-icon svg {
+            height: 60px;
+            fill: var(--main);
+            filter: drop-shadow(0 0 5px var(--main));
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            margin: 10px 0;
+        }
+        h3 {
+            font-size: 17px;
+            margin: 0;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .btn {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            color: white;
+            font-size: 13px;
+            transition: 0.2s;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .btn-ws { background: var(--ws); }
+        .btn-tg { background: var(--tg); }
+        .btn:hover { filter: brightness(1.2); transform: scale(1.02); }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0.5;
+            font-size: 12px;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://i.imgur.com/your-logo-here.png" alt="AccesesBel Logo" class="logo-main">
+    <h1 class="brand">AccesesBel <span>Sc</span></h1>
+    <div class="search-container">
+        <input type="text" id="itemSearch" placeholder="¿Qué cuenta buscas? (Ej: Netflix, Canva...)" onkeyup="filterItems()">
+    </div>
+</header>
+
+<div class="container" id="app"></div>
+
+<footer>
+    &copy; 2026 ACCESESBEL SC | PREMIUM STORE | LA GUAIRA, VENEZUELA
+</footer>
+
+<script>
+const icons = {
+    play: `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`,
+    tv: `<svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>`,
+    music: `<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`,
+    ai: `<svg viewBox="0 0 24 24"><path d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.94 12.21 22 12 22C11.79 22 11.59 21.94 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.06 11.79 2 12 2C12.21 2 12.41 2.06 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5Z"/></svg>`,
+    tool: `<svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>`,
+    gaming: `<svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>`
+};
+
+// --- BASE DE DATOS DE PRODUCTOS ---
+// Para poner un logo a cada uno, añade la propiedad "img" con el link de la imagen.
+const shop = [
+    {
+        cat: "🎬 SERIES Y PELÍCULAS",
+        ico: "play",
+        items: [
+            { n: "Netflix Única", p: "6 USD", img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+            { n: "Netflix Premium", p: "4 USD", img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+            { n: "Disney+ Premium", p: "3.5 USD", img: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" },
+            { n: "MAX", p: "3 USD", img: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Max_logo.svg" },
+            { n: "Prime Video", p: "3 USD", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" },
+            { n: "Crunchyroll", p: "2.5 USD", img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.svg" }
+        ]
+    },
+    {
+        cat: "🎵 MÚSICA Y VIDEOS",
+        ico: "music",
+        items: [
+            { n: "Spotify Premium", p: "4 USD", img: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_with_text.svg" },
+            { n: "YouTube Premium", p: "4 USD", img: "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" }
+        ]
+    },
+    {
+        cat: "🤖 INTELIGENCIA ARTIFICIAL",
+        ico: "ai",
+        items: [
+            { n: "ChatGPT Plus", p: "7 USD", img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" }
+        ]
+    },
+    {
+        cat: "🎮 GAMING",
+        ico: "gaming",
+        items: [
+            { n: "Minecraft Premium", p: "15 USD", img: "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png" },
+            { n: "Free Fire Diamantes", p: "Desde 1 USD", img: "https://upload.wikimedia.org/wikipedia/en/a/a1/Free_Fire_Logo.png" }
+        ]
+    }
+];
+
+const render = () => {
+    const root = document.getElementById('app');
+    root.innerHTML = ''; // Limpiar para el buscador
+    
+    shop.forEach(section => {
+        let sectionHtml = `<div class="category-section" id="cat-${section.ico}">
+            <div class="category-header">${section.cat}</div>
+            <div class="grid">`;
+        
+        let hasVisibleItems = false;
+
+        section.items.forEach(item => {
+            sectionHtml += `
+                <div class="card" data-name="${item.n.toLowerCase()}">
+                    <div class="product-img-container">
+                        ${item.img ? `<img src="${item.img}" class="product-img" alt="${item.n}">` : `<div class="product-icon">${icons[section.ico]}</div>`}
+                    </div>
+                    <h3>${item.n}</h3>
+                    <span class="price">${item.p}</span>
+                    <div class="actions">
+                        <button class="btn btn-ws" onclick="order('ws','${item.n}','${item.p}')">WhatsApp</button>
+                        <button class="btn btn-tg" onclick="order('tg','${item.n}','${item.p}')">Telegram</button>
+                    </div>
+                </div>`;
+        });
+        
+        root.innerHTML += sectionHtml + `</div></div>`;
+    });
+};
+
+// Función del Buscador
+const filterItems = () => {
+    const query = document.getElementById('itemSearch').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        if (name.includes(query)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Ocultar cabeceras vacías
+    document.querySelectorAll('.category-section').forEach(section => {
+        const visibleCards = section.querySelectorAll('.card[style="display: flex;"]').length;
+        const allCards = section.querySelectorAll('.card').length;
+        const hiddenCards = section.querySelectorAll('.card[style="display: none;"]').length;
+        
+        if (hiddenCards === allCards) {
+            section.style.display = 'none';
+        } else {
+            section.style.display = 'block';
+        }
+    });
+};
+
+const order = (type, prod, price) => {
+    const msg = encodeURIComponent(`¡Hola! Quisiera comprar la cuenta de: ${prod} por ${price}.`);
+    if(type === 'ws') {
+        window.open(`https://api.whatsapp.com/send?phone=584242157241&text=${msg}`, '_blank');
+    } else {
+        window.open(`https://t.me/AccesesBels`, '_blank');
+    }
+};
+
+render();
+</script>
+</body>
+</html>
