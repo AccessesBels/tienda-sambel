@@ -6,109 +6,102 @@
     <title>AccesesBel Sc | Premium Store</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <style>
-        :root { --main: #00f2ff; --bg: #0a0a0a; --card: #151515; --text: #ffffff; --ws: #25d366; --tg: #0088cc; }
+        :root { --main: #00f2ff; --bg: #050505; --card: #121212; --text: #ffffff; --ws: #25d366; --tg: #0088cc; }
         body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; }
-        
-        header { 
-            padding: 40px 20px; text-align: center; background: #000;
-            border-bottom: 2px solid var(--main); position: sticky; top: 0; z-index: 1000;
-        }
-        .logo-main { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--main); margin-bottom: 15px; object-fit: cover; }
-        .brand { font-size: 28px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-        .brand span { color: var(--main); }
-
+        header { padding: 40px 20px; text-align: center; background: #000; border-bottom: 2px solid var(--main); position: sticky; top: 0; z-index: 1000; }
+        .logo-main { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--main); box-shadow: 0 0 20px var(--main); margin-bottom: 15px; object-fit: cover; }
+        .brand { font-size: 32px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .brand span { color: var(--main); text-shadow: 0 0 10px var(--main); }
         .container { max-width: 1400px; margin: auto; padding: 20px; }
-        .category-header { 
-            font-size: 20px; font-weight: 800; margin: 40px 0 20px; padding: 10px 15px;
-            background: rgba(0,242,255,0.1); border-left: 5px solid var(--main); color: var(--main); text-transform: uppercase;
-        }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .card { 
-            background: var(--card); border-radius: 15px; padding: 25px; border: 1px solid #222; 
-            text-align: center; transition: 0.3s;
-        }
-        .card:hover { border-color: var(--main); transform: translateY(-5px); }
-        
-        /* Contenedor de logos integrados */
-        .icon-box { height: 60px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
-        .icon-box svg { height: 100%; width: auto; fill: var(--main); }
-        
-        .price { font-size: 30px; font-weight: 800; color: #fff; margin: 15px 0; display: block; }
-        h3 { font-size: 18px; margin: 0; min-height: 40px; }
-        
-        .btn { 
-            display: block; width: 100%; padding: 12px 0; margin-top: 10px; border-radius: 8px; 
-            border: none; font-weight: 800; cursor: pointer; color: white; text-decoration: none; font-size: 14px;
-        }
-        .btn-ws { background: var(--ws); }
-        .btn-tg { background: var(--tg); }
+        .category-header { font-size: 22px; font-weight: 800; margin: 50px 0 25px; padding: 12px 20px; background: linear-gradient(90deg, rgba(0,242,255,0.1), transparent); border-left: 5px solid var(--main); color: var(--main); text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: var(--card); border-radius: 15px; padding: 20px; border: 1px solid #222; text-align: center; transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); border-color: var(--main); box-shadow: 0 0 25px rgba(0,242,255,0.2); }
+        .icon-box { height: 50px; margin-bottom: 15px; fill: var(--main); display: flex; align-items: center; justify-content: center; }
+        .icon-box svg { height: 100%; width: auto; }
+        .price { font-size: 28px; font-weight: 900; color: #fff; margin: 10px 0; }
+        h3 { font-size: 16px; margin: 0; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+        .btn { padding: 12px; border-radius: 8px; border: none; font-weight: 800; cursor: pointer; color: white; font-size: 12px; transition: 0.2s; text-decoration: none; }
+        .btn-ws { background: var(--ws); } .btn-tg { background: var(--tg); }
+        footer { text-align: center; padding: 80px; opacity: 0.4; font-size: 12px; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.jpg" alt="Logo" class="logo-main" onerror="this.style.display='none'">
+    <img src="logo.jpg" alt="Logo" class="logo-main" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5260/5260498.png'">
     <h1 class="brand">AccesesBel <span>Sc</span></h1>
 </header>
 
 <div class="container" id="app"></div>
 
-<footer>
-    <p style="text-align: center; padding: 40px; opacity: 0.5; font-size: 12px;">&copy; 2026 ACCESESBEL SC | VENEZUELA</p>
-</footer>
+<footer>&copy; 2026 ACCESESBEL SC | LA GUAIRA, VENEZUELA</footer>
 
 <script>
-const catalog = [
+const playIco = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const gameIco = '<svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>';
+const musicIco = '<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
+const toolIco = '<svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>';
+
+const shop = [
     { cat: "🎮 GAMING & RECARGAS", items: [
-        { n: "Minecraft Premium", p: "15 USD" },
-        { n: "Free Fire Diamantes", p: "Desde 1 USD" },
-        { n: "COD Mobile CP", p: "Desde 1 USD" },
-        { n: "Blood Strike", p: "Desde 1 USD" }
+        { n: "Minecraft Premium", p: "15 USD", i: gameIco }, { n: "Free Fire Diamantes", p: "Desde 1 USD", i: gameIco },
+        { n: "COD Mobile CP", p: "Desde 1 USD", i: gameIco }, { n: "Blood Strike", p: "Desde 1 USD", i: gameIco }
     ]},
     { cat: "🎬 SERIES Y PELÍCULAS", items: [
-        { n: "Netflix Premium", p: "4 USD" },
-        { n: "Disney+ Premium", p: "3.5 USD" },
-        { n: "MAX (HBO)", p: "3 USD" },
-        { n: "Prime Video", p: "3 USD" },
-        { n: "Crunchyroll", p: "2.5 USD" },
-        { n: "Paramount+", p: "3 USD" }
+        { n: "Netflix Única", p: "6 USD", i: playIco }, { n: "Netflix Premium", p: "4 USD", i: playIco },
+        { n: "Disney+ Premium", p: "3.5 USD", i: playIco }, { n: "Disney+ Estándar", p: "2 USD", i: playIco },
+        { n: "MAX", p: "3 USD", i: playIco }, { n: "VIX+", p: "2 USD", i: playIco },
+        { n: "Apple TV", p: "3 USD", i: playIco }, { n: "Prime Video", p: "3 USD", i: playIco },
+        { n: "Paramount+", p: "3 USD", i: playIco }, { n: "Universal+", p: "2 USD", i: playIco },
+        { n: "Crunchyroll", p: "2.5 USD", i: playIco }, { n: "Crunchyroll 12m", p: "15 USD", i: playIco },
+        { n: "Viki Rakuten", p: "3 USD", i: playIco }, { n: "NBA League Pass", p: "5 USD", i: playIco }
     ]},
-    { cat: "🎵 MÚSICA", items: [
-        { n: "Spotify Premium", p: "4 USD" },
-        { n: "YouTube Premium", p: "4 USD" }
+    { cat: "📹 TV EN VIVO", items: [
+        { n: "Tele Latino", p: "3 USD", i: playIco }, { n: "Flujo TV", p: "3 USD", i: playIco }
     ]},
-    { cat: "🎨 HERRAMIENTAS & IA", items: [
-        { n: "ChatGPT Plus", p: "7 USD" },
-        { n: "Canva Pro", p: "3.5 USD" }
+    { cat: "🎵 MÚSICA Y VIDEOS", items: [
+        { n: "Spotify", p: "4 USD", i: musicIco }, { n: "Tidal", p: "2 USD", i: musicIco },
+        { n: "Deezer", p: "2 USD", i: musicIco }, { n: "Apple Music", p: "3 USD", i: musicIco },
+        { n: "YouTube 1 mes", p: "4 USD", i: musicIco }
+    ]},
+    { cat: "🤖 INTELIGENCIA ARTIFICIAL", items: [
+        { n: "ChatGPT Plus", p: "7 USD", i: toolIco }
+    ]},
+    { cat: "🎨 HERRAMIENTAS Y OTROS", items: [
+        { n: "Canva Pro EDU", p: "2 USD", i: toolIco }, { n: "Canva Pro EDU 12m", p: "8 USD", i: toolIco },
+        { n: "Canva Pro Nueva", p: "3.5 USD", i: toolIco }, { n: "Canva Pro Renovación", p: "5 USD", i: toolIco },
+        { n: "Adobe Creative Cloud", p: "8 USD", i: toolIco }, { n: "Cap Cut", p: "5 USD", i: toolIco },
+        { n: "SurfShark VPN", p: "3 USD", i: toolIco }, { n: "Express VPN", p: "3 USD", i: toolIco },
+        { n: "Google Drive 2TB 12m", p: "20 USD", i: toolIco }
     ]}
 ];
 
-// SVG genérico de alta calidad para evitar imágenes rotas
-const iconSvg = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>`;
-
-function render() {
+const render = () => {
     const root = document.getElementById('app');
-    catalog.forEach(section => {
-        let html = `<div class="category-header">${section.cat}</div><div class="grid">`;
-        section.items.forEach(item => {
-            html += `
+    shop.forEach(s => {
+        let h = `<div class="category-header">${s.cat}</div><div class="grid">`;
+        s.items.forEach(i => {
+            h += `
                 <div class="card">
-                    <div class="icon-box">${iconSvg}</div>
-                    <h3>${item.n}</h3>
-                    <span class="price">${item.p}</span>
-                    <button class="btn btn-ws" onclick="order('ws','${item.n}','${item.p}')">WHATSAPP</button>
-                    <button class="btn btn-tg" onclick="order('tg','${item.n}','${item.p}')">TELEGRAM</button>
+                    <div class="icon-box">${i.i}</div>
+                    <h3>${i.n}</h3>
+                    <span class="price">${i.p}</span>
+                    <div class="actions">
+                        <button class="btn btn-ws" onclick="go('ws','${i.n}','${i.p}')">WhatsApp</button>
+                        <button class="btn btn-tg" onclick="go('tg','${i.n}','${i.p}')">Telegram</button>
+                    </div>
                 </div>`;
         });
-        root.innerHTML += html + `</div>`;
+        root.innerHTML += h + `</div>`;
     });
-}
+};
 
-function order(type, prod, price) {
-    const msg = encodeURIComponent(`Hola AccesesBel Sc! Quisiera adquirir: ${prod} por ${price}.`);
-    window.open(type === 'ws' ? `https://wa.me/584242157241?text=${msg}` : `https://t.me/AccesesBels`, '_blank');
-}
+const go = (t, n, p) => {
+    const m = encodeURIComponent(`Hola AccesesBel Sc! Quisiera adquirir: ${n} (${p}).`);
+    window.open(t === 'ws' ? `https://wa.me/584242157241?text=${m}` : `https://t.me/AccesesBels`, '_blank');
+};
 render();
 </script>
 </body>
